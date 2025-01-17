@@ -33,3 +33,55 @@ git clone [https://github.com/matheusssilva991/tarefa1_gpio_embarcatech.git]
 
 4. Configure o Pico SDK seguindo a [Documentação do Raspberry Pi
 Pico] https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf
+
+## Como Executar o Projeto
+
+### Configuração do Ambiente
+1. No VS Code, instale as seguintes extensões:
+   - CMake Tools
+   - Wokwi Simulator
+   - C/C++
+
+2. Configure o ambiente Pico SDK:
+   - Certifique-se de que o PICO_SDK_PATH está configurado corretamente nas variáveis de ambiente
+   - Instale o CMake e o compilador GCC para ARM
+   - Configure o arquivo CMakeLists.txt com as dependências necessárias
+
+### Compilação e Execução
+1. Prepare o projeto:
+   ```bash
+   mkdir build
+   cd build
+   cmake ..
+   ```
+
+2. Compile o projeto:
+   ```bash
+   make
+   ```
+
+3. Simulação no Wokwi:
+   - Abra o VS Code
+   - Crie/edite o arquivo wokwi.toml
+   - Configure o diagram.json com os componentes:
+     * Raspberry Pi Pico W
+     * Teclado Matricial 4x4
+     * 3 LEDs RGB
+     * Buzzer
+   - Conecte os componentes seguindo o esquema do projeto
+   - Carregue o arquivo .uf2 gerado na compilação
+   - Clique em "Start Simulation"
+
+### Pinagem do Projeto
+- Teclado Matricial:
+  * Linhas: GPIOs [especificar pinos]
+  * Colunas: GPIOs [especificar pinos]
+- LEDs RGB:
+  * LED1: GPIOs [especificar pinos]
+  * LED2: GPIOs [especificar pinos]
+  * LED3: GPIOs [especificar pinos]
+- Buzzer: GPIO [especificar pino]
+
+### Funcionamento
+- O teclado matricial controla os LEDs RGB e o buzzer
+- [Adicionar descrição específica do funcionamento do seu projeto]
