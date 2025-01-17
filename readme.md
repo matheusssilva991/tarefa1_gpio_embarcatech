@@ -114,3 +114,16 @@ Contribuições são sempre bem-vindas! Siga os passos abaixo para participar:
 ---
 
 Qualquer dúvida ou sugestão, sinta-se à vontade para abrir uma issue ou entrar em contato.
+
+## Membros da Equipe de desenvolvedores
+- [nome do desenvolvedor 1] - [Função específica]
+- [Nome do Desenvolvedor 2] - [Função específica]
+- [Nome do Desenvolvedor 3] - [Função específica]
+- [Nome do Desenvolvedor 4] - [Função específica]
+- [Nome do Desenvolvedor 5] - [Função específica]
+- [Nome do Desenvolvedor 6] - [Função específica]
+- [Nome do Desenvolvedor 7] - [Função específica]
+
+## Links Úteis
+- [Simulação no Wokwi](https://www.dropbox.com/scl/fi/va5dp18ahzarjyd6z8boh/2025-01-09-16-29-53.mkv?rlkey=j93icbgjf3m080d1tyde33fxz&dl=0)
+- [Experimento BitDogLab](https://www.dropbox.com/scl/fi/oakfs3evgysjt6dmtel60/VID-20250109-WA0043.mp4?rlkey=03s40wpvjx5hhjipdoi2q8uky&dl=0)
