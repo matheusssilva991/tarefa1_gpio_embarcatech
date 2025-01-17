@@ -72,19 +72,8 @@ Pico] https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf
    - Carregue o arquivo .uf2 gerado na compilação
    - Clique em "Start Simulation"
 
-### Pinagem do Projeto
-- Teclado Matricial:
-  * Linhas: GPIOs [especificar pinos]
-  * Colunas: GPIOs [especificar pinos]
-- LEDs RGB:
-  * LED1: GPIOs [especificar pinos]
-  * LED2: GPIOs [especificar pinos]
-  * LED3: GPIOs [especificar pinos]
-- Buzzer: GPIO [especificar pino]
-
 ### Funcionamento
 - O teclado matricial controla os LEDs RGB e o buzzer
-- [Adicionar descrição específica do funcionamento]
 
 ## Demonstração
 Vídeo demonstrativo do projeto em funcionamento: [Link do Vídeo]
@@ -115,15 +104,76 @@ Contribuições são sempre bem-vindas! Siga os passos abaixo para participar:
 
 Qualquer dúvida ou sugestão, sinta-se à vontade para abrir uma issue ou entrar em contato.
 
-## Membros da Equipe de desenvolvedores
-- [nome do desenvolvedor 1] - [Função específica]
-- [Nome do Desenvolvedor 2] - [Função específica]
-- [Nome do Desenvolvedor 3] - [Função específica]
-- [Nome do Desenvolvedor 4] - [Função específica]
-- [Nome do Desenvolvedor 5] - [Função específica]
-- [Nome do Desenvolvedor 6] - [Função específica]
-- [Nome do Desenvolvedor 7] - [Função específica]
+## 🤝 Equipe
 
-## Links Úteis
+Membros da equipe de desenvolvimento do projeto:
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/matheusssilva991">
+        <img src="https://github.com/matheusssilva991.png" width="100px;" alt="Foto de Matheus Santos Silva no GitHub"/><br>
+        <b>Matheus Santos Silva (matheusssilva991)</b>
+        <p>Desenvolvedor Back-end - NestJS</p>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/suianialmeida">
+        <img src="https://github.com/suianialmeida.png" width="100px;" alt="Foto de Suiani Almeida no GitHub"/><br>
+        <b>Suiani Almeida</b>
+        <p>Desenvolvedora em Sistemas Embarcados e IoT</p>
+      </a>
+    </td>
+    <td align="center"> 
+      <a href="https://github.com/davi-aguiar">
+        <img src="https://github.com/davi-aguiar.png" width="100px;" alt="Foto do Davi no GitHub"/><br>
+        <b>Davi Aguiar</b>
+        <p>ML/AI Developer</p>
+      </a>
+    </td>
+    <td align="center"> 
+      <a href="https://github.com/KeyllaK">
+        <img src="https://github.com/KeyllaK.png" width="100px;" alt="Foto de Keylla Kaylla no GitHub"/><br>
+        <b>Keylla Kaylla Silva de Oliveira</b>
+        <p>ML/AI Developer</p>
+      </a>
+    </td>
+    <td align="center"> 
+      <a href="https://github.com/wildinho10">
+        <img src="https://github.com/wildinho10.png" width="100px;" alt="Foto de Wild Freitas no GitHub"/><br>
+        <b>Wild Freitas da Silva Santos</b>
+        <p>ML/AI Developer</p>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"> 
+      <a href="https://github.com/EriclesBSa">
+        <img src="https://github.com/EriclesBSa.png" width="100px;" alt="Foto de Ericles Barros de Sá no GitHub"/><br>
+        <b>Éricles Barros de Sá</b>
+        <p>Estudante de Engenharia da Computação</p>
+      </a>
+    </td>
+    </tr>
+  <tr>
+    <td align="center"> 
+      <a href="https://github.com/AiltonGabriel70">
+        <img src="https://github.com/AiltonGabriel70.png" width="100px;" alt="Foto de Ailton Gabriel no GitHub"/><br>
+        <b>Ailton Gabriel</b>
+      </a>
+    </td>
+     <td align="center"> 
+      <a href="https://github.com/AlcantaracomT">
+        <img src="https://github.com/AlcantaracomT.png" width="100px;" alt="Foto de Tiago Alcantara no GitHub"/><br>
+        <b>Tiago Alcantara</b>
+      </a>
+    </td>
+    <td align="center"> 
+      <a href="https://github.com/PedroLSena">
+        <img src="https://github.com/PedroLSena.png" width="100px;" alt="Foto de Pedro Sena no GitHub"/><br>
+        <b>Pedro Sena</b>
+      </a>
+    </td>
+    
+    ## Links Úteis
 - [Simulação no Wokwi](https://www.dropbox.com/scl/fi/va5dp18ahzarjyd6z8boh/2025-01-09-16-29-53.mkv?rlkey=j93icbgjf3m080d1tyde33fxz&dl=0)
 - [Experimento BitDogLab](https://www.dropbox.com/scl/fi/oakfs3evgysjt6dmtel60/VID-20250109-WA0043.mp4?rlkey=03s40wpvjx5hhjipdoi2q8uky&dl=0)
