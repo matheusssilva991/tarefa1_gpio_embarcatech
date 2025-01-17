@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
+#include "hardware/clocks.h"
+#include "hardware/pwm.h"
 
 // Definir variáveis do LED RGB
 #define LED_RED 13
@@ -15,7 +17,12 @@ char teclado[4][4] = {{'1', '2', '3', 'A'},
                       {'7', '8', '9', 'C'},
                       {'*', '0', '#', 'D'}};
 
-// Definir variáveis do Buzzer
+// Definir variáveis do Buzzer 
+
+// Frequência de operação do Buzzer (Hz)
+#define BUZZER_FREQUENCY 100
+// Pino Buzzer GPIO 21
+#define BUZZER_PIN 21
 
 /*Essa função inicializa os pinos GPIO do teclado matricial e
 Ativa resistores pull-down nos pinos de entrada para evitar leituras flutuantes */
@@ -145,7 +152,7 @@ void read_keypad(char tecla)
         break;
 
     case '#':
-        // Implementar função correspondente
+        play_buzzer(BUZZER_PIN, BUZZER_FREQUENCY, 500); // Bipe do buzzer de 500ms
         break;
 
     case '*':
@@ -158,8 +165,34 @@ void read_keypad(char tecla)
     }
 }
 
-// Função para tocar o buzzer
-void play_buzzer(freq, duration);
+// Função para tocar o Buzzer
+void play_buzzer(uint gpio, uint freq, uint duration_ms) {
+    gpio_set_function(BUZZER_PIN, GPIO_FUNC_PWM); // Configura o pino como PWM
+    
+    // Slice PWM do pino
+    uint slice_num = pwm_gpio_to_slice_num(BUZZER_PIN);
+
+    // Configuração do PWM
+    pwm_config config = pwm_get_default_config();
+    pwm_config_set_clkdiv(&config, 4.0f); // Definindo o divisor de clock
+    pwm_init(slice_num, &config, true);
+
+    // Frequência do PWM pela BUZZER_FREQUENCY
+    uint clock_freq = clock_get_hz(clk_sys); // Frequência do clock 
+    float clkdiv = 4.0f; // Divisor do clock
+    uint top = clock_freq / (freq * clkdiv); // Cálculo do TOP 
+
+    pwm_set_wrap(slice_num, top); 
+    pwm_set_gpio_level(BUZZER_PIN, top / 2); 
+
+    // Duração do som emitido
+    sleep_ms(duration_ms);
+
+    // Desliga o Buzzer
+    pwm_set_gpio_level(BUZZER_PIN, 0);
+    
+    sleep_ms(100); // Entrepausa de 100ms
+}
 
 int main()
 {
