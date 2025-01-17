@@ -2,7 +2,7 @@
 #include "pico/stdlib.h"
 
 // Definir variáveis do LED RGB
-#define LED_RED 10
+#define LED_RED 13
 #define LED_GREEN 11
 #define LED_BLUE 12
 
