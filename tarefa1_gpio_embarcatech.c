@@ -3,6 +3,12 @@
 #include "hardware/clocks.h"
 #include "hardware/pwm.h"
 
+void play_buzzer(uint gpio, uint freq, uint duration_ms);
+void turn_on_led(int red_pin, int green_pin, int blue_pin, int red, int green, int blue);
+void read_keypad(char tecla);
+void pinoMatricial();
+char teclaPressionada();
+
 // Definir variáveis do LED RGB
 #define LED_RED 13
 #define LED_GREEN 11
@@ -17,51 +23,73 @@ char teclado[4][4] = {{'1', '2', '3', 'A'},
                       {'7', '8', '9', 'C'},
                       {'*', '0', '#', 'D'}};
 
-// Definir variáveis do Buzzer 
+// Definir variáveis do Buzzer
 
 // Frequência de operação do Buzzer (Hz)
 #define BUZZER_FREQUENCY 100
 // Pino Buzzer GPIO 21
 #define BUZZER_PIN 21
 
-/*Essa função inicializa os pinos GPIO do teclado matricial e
-Ativa resistores pull-down nos pinos de entrada para evitar leituras flutuantes */
-void pinoMatricial()
+int main()
 {
-    for (int i = 0; i < 4; i++)
-    {
-        gpio_init(linha[i]);
-        gpio_set_dir(linha[i], GPIO_OUT);
-        gpio_put(linha[i], 0);
-    }
+    char key;
 
-    for (int j = 0; j < 4; j++)
+    // Inicializar GPIOs do LED RGB
+    gpio_init(LED_RED);
+    gpio_set_dir(LED_RED, GPIO_OUT);
+    gpio_init(LED_GREEN);
+    gpio_set_dir(LED_GREEN, GPIO_OUT);
+    gpio_init(LED_BLUE);
+    gpio_set_dir(LED_BLUE, GPIO_OUT);
+    pinoMatricial(); // chama a função do GPIO do teclado matricial
+
+    // Inicializar GPIOs do Buzzer
+
+    stdio_init_all();
+
+    while (true)
     {
-        gpio_init(coluna[j]);
-        gpio_set_dir(coluna[j], GPIO_IN);
-        gpio_pull_down(coluna[j]);
+        // Ler tecla pressionada
+        key = teclaPressionada();
+
+        if (key != '\0')
+        {
+            read_keypad(key);
+        }
+
+        // Ligar LED RGB de acordo com a tecla pressionada
+
+        // Tocar buzzer com frequência e duração de acordo com a tecla pressionada
     }
 }
 
-// Essa função verifica o teclado matricial para detectar qual tecla foi pressionada.
-char teclaPressionada()
-{
-    for (int i = 0; i < 4; i++)
-    {
-        gpio_put(linha[i], 1);
+// Função para tocar o Buzzer
+void play_buzzer(uint gpio, uint freq, uint duration_ms) {
+    gpio_set_function(BUZZER_PIN, GPIO_FUNC_PWM); // Configura o pino como PWM
 
-        for (int j = 0; j < 4; j++)
-        {
-            if (gpio_get(coluna[j]))
-            {
-                gpio_put(linha[i], 0);
-                return teclado[i][j];
-            }
-        }
+    // Slice PWM do pino
+    uint slice_num = pwm_gpio_to_slice_num(BUZZER_PIN);
 
-        gpio_put(linha[i], 0);
-    }
-    return '\0';
+    // Configuração do PWM
+    pwm_config config = pwm_get_default_config();
+    pwm_config_set_clkdiv(&config, 4.0f); // Definindo o divisor de clock
+    pwm_init(slice_num, &config, true);
+
+    // Frequência do PWM pela BUZZER_FREQUENCY
+    uint clock_freq = clock_get_hz(clk_sys); // Frequência do clock
+    float clkdiv = 4.0f; // Divisor do clock
+    uint top = clock_freq / (freq * clkdiv); // Cálculo do TOP
+
+    pwm_set_wrap(slice_num, top);
+    pwm_set_gpio_level(BUZZER_PIN, top / 2);
+
+    // Duração do som emitido
+    sleep_ms(duration_ms);
+
+    // Desliga o Buzzer
+    pwm_set_gpio_level(BUZZER_PIN, 0);
+
+    sleep_ms(100); // Entrepausa de 100ms
 }
 
 // Função para ligar o LED RGB
@@ -71,6 +99,7 @@ void turn_on_led(int red_pin, int green_pin, int blue_pin, int red, int green, i
     gpio_put(green_pin, green);
     gpio_put(blue_pin, blue);
 }
+
 // Função recebe o caractere correspondente à tecla pressionada e realiza uma ação associada.
 void read_keypad(char tecla)
 {
@@ -165,69 +194,42 @@ void read_keypad(char tecla)
     }
 }
 
-// Função para tocar o Buzzer
-void play_buzzer(uint gpio, uint freq, uint duration_ms) {
-    gpio_set_function(BUZZER_PIN, GPIO_FUNC_PWM); // Configura o pino como PWM
-    
-    // Slice PWM do pino
-    uint slice_num = pwm_gpio_to_slice_num(BUZZER_PIN);
-
-    // Configuração do PWM
-    pwm_config config = pwm_get_default_config();
-    pwm_config_set_clkdiv(&config, 4.0f); // Definindo o divisor de clock
-    pwm_init(slice_num, &config, true);
-
-    // Frequência do PWM pela BUZZER_FREQUENCY
-    uint clock_freq = clock_get_hz(clk_sys); // Frequência do clock 
-    float clkdiv = 4.0f; // Divisor do clock
-    uint top = clock_freq / (freq * clkdiv); // Cálculo do TOP 
-
-    pwm_set_wrap(slice_num, top); 
-    pwm_set_gpio_level(BUZZER_PIN, top / 2); 
-
-    // Duração do som emitido
-    sleep_ms(duration_ms);
-
-    // Desliga o Buzzer
-    pwm_set_gpio_level(BUZZER_PIN, 0);
-    
-    sleep_ms(100); // Entrepausa de 100ms
-}
-
-int main()
+/*Essa função inicializa os pinos GPIO do teclado matricial e
+Ativa resistores pull-down nos pinos de entrada para evitar leituras flutuantes */
+void pinoMatricial()
 {
-    char key;
-
-    // Inicializar GPIOs do LED RGB
-    gpio_init(LED_RED);
-    gpio_set_dir(LED_RED, GPIO_OUT);
-    gpio_init(LED_GREEN);
-    gpio_set_dir(LED_GREEN, GPIO_OUT);
-    gpio_init(LED_BLUE);
-    gpio_set_dir(LED_BLUE, GPIO_OUT);
-    pinoMatricial(); // chama a função do GPIO do teclado matricial
-
-    // Inicializar GPIOs do Buzzer
-
-    stdio_init_all();
-
-    while (true)
+    for (int i = 0; i < 4; i++)
     {
-        // Ler tecla pressionada
-        key = teclaPressionada();
+        gpio_init(linha[i]);
+        gpio_set_dir(linha[i], GPIO_OUT);
+        gpio_put(linha[i], 0);
+    }
 
-        if (key != '\0')
-        {
-            read_keypad(key);
-        }
-
-        // Ligar LED RGB de acordo com a tecla pressionada
-
-        // Tocar buzzer com frequência e duração de acordo com a tecla pressionada
+    for (int j = 0; j < 4; j++)
+    {
+        gpio_init(coluna[j]);
+        gpio_set_dir(coluna[j], GPIO_IN);
+        gpio_pull_down(coluna[j]);
     }
 }
 
-void play_buzzer(freq, duration)
+// Essa função verifica o teclado matricial para detectar qual tecla foi pressionada.
+char teclaPressionada()
 {
-    // Implementar função para tocar o buzzer
+    for (int i = 0; i < 4; i++)
+    {
+        gpio_put(linha[i], 1);
+
+        for (int j = 0; j < 4; j++)
+        {
+            if (gpio_get(coluna[j]))
+            {
+                gpio_put(linha[i], 0);
+                return teclado[i][j];
+            }
+        }
+
+        gpio_put(linha[i], 0);
+    }
+    return '\0';
 }
