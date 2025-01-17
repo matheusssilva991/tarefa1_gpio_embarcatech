@@ -84,4 +84,33 @@ Pico] https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf
 
 ### Funcionamento
 - O teclado matricial controla os LEDs RGB e o buzzer
-- [Adicionar descrição específica do funcionamento do seu projeto]
+- [Adicionar descrição específica do funcionamento]
+
+## Demonstração
+Vídeo demonstrativo do projeto em funcionamento: [Link do Vídeo]
+
+## 📝 Contribuição
+
+Contribuições são sempre bem-vindas! Siga os passos abaixo para participar:
+
+1. **Faça um Fork do Repositório**  
+   Clique no botão "Fork" na página do projeto no GitHub.
+
+2. **Crie uma Nova Branch**  
+   ```bash
+   git checkout -b feature/sua-nova-função
+   ```
+3. **Implemente as Mudanças**  
+   Edite o código e faça commits regularmente.
+
+4. **Envie as Mudanças**  
+   ```bash
+   git push origin feature/sua-nova-função
+   ```
+
+5. **Abra um Pull Request**  
+   Descreva suas alterações e aguarde a revisão.
+
+---
+
+Qualquer dúvida ou sugestão, sinta-se à vontade para abrir uma issue ou entrar em contato.
