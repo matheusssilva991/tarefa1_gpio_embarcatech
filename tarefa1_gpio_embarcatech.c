@@ -7,6 +7,7 @@
 
 void init_led_pins();
 void init_matrix_pins();
+void init_buzzer();
 void play_buzzer(uint freq, uint duration_ms);
 void put_led_rgb(int red_pin, int green_pin, int blue_pin, int red, int green, int blue);
 char get_pressed_key();
@@ -166,6 +167,7 @@ void init_matrix_pins()
     }
 }
 
+// Função para inicializar o Buzzer
 void init_buzzer() {
     // Inicializar GPIOs do Buzzer
     gpio_set_function(BUZZER_PIN, GPIO_FUNC_PWM); // Configura o pino como PWM
