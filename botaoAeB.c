@@ -114,7 +114,10 @@ int main()
                 break;
     
             case 'B':
-                // Implementar função correspondente
+                printf("Tecla pressionada: %c\n", key);
+                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 0, 1, 1); // Liga verde e azul
+                play_buzzer(800, 500); // Toca buzzer em 800 Hz por 500ms
+                sleep_ms(200);
                 break;
 
             case 'C':
