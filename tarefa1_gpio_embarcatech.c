@@ -137,6 +137,10 @@ int main()
     }
 }
 
+void debounce_delay() {
+    sleep_ms(50); // Delay de 50ms
+}
+
 // Essa função inicializa os pinos GPIO do led RGB
 void init_led_pins() {
     gpio_init(LED_RED_PIN);
@@ -219,22 +223,18 @@ void put_led_rgb(int red_pin, int green_pin, int blue_pin, int red, int green, i
 }
 
 // Essa função verifica o teclado matricial para detectar qual tecla foi pressionada.
-char get_pressed_key()
-{
-    for (int i = 0; i < 4; i++)
-    {
+char get_pressed_key() {
+    for (int i = 0; i < 4; i++) {
         gpio_put(rows[i], 1);
-
-        for (int j = 0; j < 4; j++)
-        {
-            if (gpio_get(columns[j]))
-            {
+        debounce_delay();
+        for (int j = 0; j < 4; j++) {
+            if (gpio_get(columns[j])) {
                 gpio_put(rows[i], 0);
                 return keypad[i][j];
             }
         }
-
         gpio_put(rows[i], 0);
     }
     return '\0';
 }
+
