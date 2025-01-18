@@ -4,7 +4,6 @@
 #include "hardware/pwm.h"
 
 // Protótipos
-
 void init_led_pins();
 void init_matrix_pins();
 void init_buzzer();

@@ -41,12 +41,12 @@ pico_set_program_name(tarefa1_gpio_embarcatech "tarefa1_gpio_embarcatech")
 pico_set_program_version(tarefa1_gpio_embarcatech "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(tarefa1_gpio_embarcatech 1)
+pico_enable_stdio_uart(tarefa1_gpio_embarcatech 0)
 pico_enable_stdio_usb(tarefa1_gpio_embarcatech 1)
 
 # Add the standard library to the build
 target_link_libraries(tarefa1_gpio_embarcatech
-        pico_stdlib hardware_pwm) 
+        pico_stdlib hardware_pwm)
 
 # Add the standard include files to the build
 target_include_directories(tarefa1_gpio_embarcatech PRIVATE
@@ -54,8 +54,8 @@ target_include_directories(tarefa1_gpio_embarcatech PRIVATE
 )
 
 # Add any user requested libraries
-target_link_libraries(tarefa1_gpio_embarcatech 
-        
+target_link_libraries(tarefa1_gpio_embarcatech
+
         )
 
 pico_add_extra_outputs(tarefa1_gpio_embarcatech)
