@@ -138,6 +138,10 @@ int main()
     }
 }
 
+define debounce_delay() {
+    sleep_ms(50); // Delay de 50ms
+}
+
 // Essa função inicializa os pinos GPIO do led RGB
 void init_led_pins() {
     gpio_init(LED_RED_PIN);
