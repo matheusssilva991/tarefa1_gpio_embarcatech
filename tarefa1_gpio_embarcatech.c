@@ -10,6 +10,7 @@ void init_buzzer();
 void play_buzzer(uint freq, uint duration_ms);
 void put_led_rgb(int red_pin, int green_pin, int blue_pin, int red, int green, int blue);
 char get_pressed_key();
+void debounce_delay();
 
 // Constantes
 #define LED_RED_PIN 13
