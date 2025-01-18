@@ -104,7 +104,7 @@ Contribuições são sempre bem-vindas! Siga os passos abaixo para participar:
 
 Qualquer dúvida ou sugestão, sinta-se à vontade para abrir uma issue ou entrar em contato.
 
-## 🤝 Equipe
+## 🤝 Equipe/Membros
 
 Membros da equipe de desenvolvimento do projeto:
 <table>
