@@ -138,7 +138,7 @@ int main()
     }
 }
 
-define debounce_delay() {
+void debounce_delay() {
     sleep_ms(50); // Delay de 50ms
 }
 
