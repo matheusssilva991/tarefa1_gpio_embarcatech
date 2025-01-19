@@ -89,8 +89,7 @@ Pico] https://datasheets.raspberrypi.com/pico/getting-started-with-pico.pdf
 
 ## Demonstração
 
-- [Link Wokwi](https://www)
-- [Video funcionamento](https://www)
+- [Video funcionamento](https://www.youtube.com/watch?v=KTAgMkpeZYA)
 
 
 ## 📝 Contribuição
