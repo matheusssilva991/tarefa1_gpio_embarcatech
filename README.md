@@ -174,6 +174,7 @@ Membros da equipe de desenvolvimento do projeto:
       <a href="https://github.com/AlcantaracomT">
         <img src="https://github.com/AlcantaracomT.png" width="100px;" alt="Foto de Tiago Alcantara no GitHub"/><br>
         <b>Tiago Alcantara</b>
+         <p>Developer</p>
       </a>
     </td>
     <td align="center">
