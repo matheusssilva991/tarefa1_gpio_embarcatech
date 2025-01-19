@@ -107,7 +107,7 @@ int main()
                 break;
 
             case 'A':
-                // Implementar função correspondente
+                police_siren_effect(); // Aciona efeito de sirene de polícia
                 break;
 
             case 'B':
@@ -213,6 +213,17 @@ void play_buzzer(uint freq, uint duration_ms)
     pwm_set_gpio_level(BUZZER_PIN, 0);
 
     sleep_ms(100); // Entrepausa de 100ms
+}
+
+// Efeito de sirene de polícia
+void police_siren_effect() {
+    for (int i = 0; i < 5; i++) {
+        put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 1, 0, 0); // LED vermelho
+        play_buzzer(440, 200); // Som agudo
+        put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 0, 0, 1); // LED azul
+        play_buzzer(220, 200); // Som grave
+    }
+    put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 0, 0, 0); // Desliga LEDs
 }
 
 // Função para ligar/desligar o LED RGB
