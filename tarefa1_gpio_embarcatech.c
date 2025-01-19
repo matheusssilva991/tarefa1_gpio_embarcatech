@@ -8,7 +8,7 @@ void init_led_pins();
 void init_matrix_pins();
 void init_buzzer();
 void play_buzzer(uint freq, uint duration_ms);
-void put_led_rgb(int red_pin, int green_pin, int blue_pin, int red, int green, int blue);
+void put_led_rgb(int red, int green, int blue);
 char get_pressed_key();
 void debounce_delay();
 
@@ -51,48 +51,48 @@ int main()
 
             case '0':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 0, 0, 0);
+                put_led_rgb(0, 0, 0);
                 sleep_ms(200);
                 break;
 
             case '1':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 1, 0, 0);
+                put_led_rgb(1, 0, 0);
                 sleep_ms(200);
                 break;
 
             case '2':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 0, 1, 0);
+                put_led_rgb(0, 1, 0);
                 sleep_ms(200);
                 break;
 
             case '3':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 0, 0, 1);
+                put_led_rgb(0, 0, 1);
                 sleep_ms(200);
                 break;
 
             case '4':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 1, 1, 0);
+                put_led_rgb(1, 1, 0);
                 sleep_ms(200);
                 break;
 
             case '5':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 1, 0, 1);
+                put_led_rgb(1, 0, 1);
                 sleep_ms(200);
                 break;
 
             case '6':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 0, 1, 1);
+                put_led_rgb(0, 1, 1);
                 sleep_ms(200);
                 break;
             case '7':
                 printf("Tecla pressionada: %c\n", key);
-                put_led_rgb(LED_RED_PIN, LED_GREEN_PIN, LED_BLUE_PIN, 1, 1, 1);
+                put_led_rgb(1, 1, 1);
                 sleep_ms(200);
                 break;
 
@@ -216,11 +216,11 @@ void play_buzzer(uint freq, uint duration_ms)
 }
 
 // Função para ligar/desligar o LED RGB
-void put_led_rgb(int red_pin, int green_pin, int blue_pin, int red, int green, int blue)
+void put_led_rgb(int red, int green, int blue)
 {
-    gpio_put(red_pin, red);
-    gpio_put(green_pin, green);
-    gpio_put(blue_pin, blue);
+    gpio_put(LED_RED_PIN, red);
+    gpio_put(LED_GREEN_PIN, green);
+    gpio_put(LED_BLUE_PIN, blue);
 }
 
 // Essa função verifica o teclado matricial para detectar qual tecla foi pressionada.
